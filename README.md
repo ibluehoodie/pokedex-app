@@ -1,2 +1,2 @@
 # pokedex-app
-CareerFoundry Achievement 2 project
+CareerFoundry Achievement 1 project
