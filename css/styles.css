@@ -1,0 +1,48 @@
+
+:root {
+  /* colors */
+
+  /* font-sizes */
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  line-height: 1.15;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: white/*#eaf2fa*/;
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.15;
+}
+
+h1 {
+  font-size: 30px;
+  font-weight: 700;
+}
+
+#work-header {
+  margin: 20px;
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+h3 {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+p {
+  font-family: 'Roboto Serif', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+}/* css/styles.css */
