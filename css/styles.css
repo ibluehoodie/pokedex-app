@@ -1,6 +1,7 @@
 
 :root {
   /* colors */
+  --white: #fff;
 
   /* font-sizes */
 }
@@ -15,7 +16,7 @@ html {
 }
 
 body {
-  background-color: white/*#eaf2fa*/;
+  background-color: var(--white);
   font-family: 'Lato', sans-serif;
   font-weight: 400;
   font-size: 16px;
@@ -42,7 +43,7 @@ h3 {
 }
 
 p {
-  font-family: 'Roboto Serif', sans-serif;
+  font-family: 'Ubuntu', sans-serif;
   font-size: 16px;
   font-weight: 400;
 }/* css/styles.css */
