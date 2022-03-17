@@ -38,11 +38,18 @@ let pokemonNew = {
     type: ["hungry", "tired"]
   };
 
-console.log(pokemonRepository.add(pokemonNew))
-console.log(pokemonRepository.getAll())
+console.log(pokemonRepository.add(pokemonNew));
+console.log(pokemonRepository.getAll());
 
+  pokemonRepository.getAll().forEach(printArrayDetails);
+  function printArrayDetails(list) {
+  document.write('<p>' + `${list.name}:` + '<br />' + `height: (${list.height})` + '<br />' + `type: (${list.type})` + '</p>');
+  };
+
+/*
 //external forEach function. Can no longer retrieve local pokemonList bc of IIFE
 pokemonList.forEach(printArrayDetails);
   function printArrayDetails(list) {
     document.write('<p>' + `${list.name}:` + '<br />' + `height: (${list.height})` + '<br />' + `type: (${list.type})` + '</p>');
   };
+*/
