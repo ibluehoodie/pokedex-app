@@ -1,5 +1,18 @@
-//For Array with number values
+/*
+function printArrayDetails(list) {
+  for (let i = 0; i < list.length; i++) {
+    //A pokemon meets the condition if it has more than one element under the "type" key.
+    if (list[i].type.length > 1){
+      document.write('<p>' + `${list[i].name} (height: ${list[i].height})` + ' - That\'s a multi-talented Pokemon!' + '<br />' + '</p>');
+    } else {
+      document.write('<p>' + `${list[i].name} (height: ${list[i].height})` + '<br />' + '</p>');
+    }
+  }
+};
+printArrayDetails(pokemonList);
+*/
 
+//For Array with number values
 let person = [
   {name: "person1", age: 16},
   {name: "person2", age: 10},
