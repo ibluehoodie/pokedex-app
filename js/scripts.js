@@ -23,33 +23,55 @@ let pokemonRepository = (function () {
   };
 
   function add(pokemon) {
-    pokemonList.push(pokemon);
+    if (
+      typeof pokemon === "object" &&
+      "name" in pokemon &&
+      "height" in pokemon &&
+      "type" in pokemon
+    ) {
+      pokemonList.push(pokemon);
+    } else {
+      //replace document.write
+      document.write("may not be a pokemon");
+    }
+  };
+
+  function addListItem(pokemon) {
+    let pokemonListUL = document.querySelector(".pokemon-list");
+    let listPoke = document.createElement("li");
+    let button = document.createElement("button");
+    button.innerText = pokemon.name;
+    button.classList.add("pokemon-list_button");
+    listPoke.appendChild(button);
+    pokemonListUL.appendChild(listPoke);
   };
 //creates an objective with same names for keys and values
   return {
     getAll: getAll,
-    add: add
+    add: add,
+    addListItem: addListItem
   };
 })();
 
+//adding pokemon with embedded object
+pokemonRepository.add({ name: "Pikachu", height: 0.3, type: ["electric"] });
+console.log(pokemonRepository.getAll());
+
+//adding pokemon with passed object
 let pokemonNew = {
     name: "Silly",
     height: 1.0,
     type: ["hungry", "tired"]
   };
-
 console.log(pokemonRepository.add(pokemonNew));
-console.log(pokemonRepository.getAll());
 
-  pokemonRepository.getAll().forEach(printArrayDetails);
+pokemonRepository.getAll().forEach(function (pokemon) {
+  pokemonRepository.addListItem(pokemon);
+  //document.write(pokemonRepository.getAll());
+});
+
+//external forEach function. Can no longer retrieve local pokemonList bc of IIFE
+/*  pokemonRepository.getAll().forEach(printArrayDetails);
   function printArrayDetails(list) {
   document.write('<p>' + `${list.name}:` + '<br />' + `height: (${list.height})` + '<br />' + `type: (${list.type})` + '</p>');
-  };
-
-/*
-//external forEach function. Can no longer retrieve local pokemonList bc of IIFE
-pokemonList.forEach(printArrayDetails);
-  function printArrayDetails(list) {
-    document.write('<p>' + `${list.name}:` + '<br />' + `height: (${list.height})` + '<br />' + `type: (${list.type})` + '</p>');
-  };
-*/
+}; */
