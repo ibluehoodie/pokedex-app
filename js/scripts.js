@@ -22,6 +22,7 @@ let pokemonRepository = (function () {
     return pokemonList;
   };
 
+//filter with typeof to accept only pokemon objects
   function add(pokemon) {
     if (
       typeof pokemon === "object" &&
@@ -36,6 +37,7 @@ let pokemonRepository = (function () {
     }
   };
 
+//replaces document.write() from the forEach loop
   function addListItem(pokemon) {
     let pokemonListUL = document.querySelector(".pokemon-list");
     let listPoke = document.createElement("li");
@@ -44,12 +46,26 @@ let pokemonRepository = (function () {
     button.classList.add("pokemon-list_button");
     listPoke.appendChild(button);
     pokemonListUL.appendChild(listPoke);
+    addListener(button, pokemon);
   };
+
+//*for a later task
+  function showDetails(pokemon) {
+    console.log(pokemon.name);
+  };
+
+  function addListener (button, pokemon) {
+    button.addEventListener ("click", function () {
+      showDetails(pokemon);
+    })
+  };
+
 //creates an objective with same names for keys and values
   return {
     getAll: getAll,
     add: add,
-    addListItem: addListItem
+    addListItem: addListItem,
+    showDetails: showDetails
   };
 })();
 
