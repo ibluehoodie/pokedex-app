@@ -3,6 +3,7 @@
   /* colors */
   --white: #fff;
   --black: #000;
+  --light-gray: #808f96;
 
   /* font-sizes */
 }
@@ -51,7 +52,7 @@ ul {
 
 .pokemon-list_button {
   width: 150px;
-  background-color: light gray;
+  background-color: rgba(211, 211, 211, 0.9);
   color: black;
   border: 3px solid red;
   border-radius: 8px;
@@ -65,4 +66,13 @@ ul {
   margin: 4px 2px;
   transition-duration: 0.4s;
   cursor: pointer;
+}
+
+.pokemon-list_button:hover,
+.pokemon-list_button:focus {
+  opacity: 0.8;
+}
+
+.pokemon-list_button:visited {
+  background-color: var(--light-gray);
 }
