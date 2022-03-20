@@ -203,3 +203,23 @@ Object.keys(armada).forEach(function(property) {
   }
 };
 window.addEventListener('keydown', hideSurveyForm);
+
+//AJAX example with fetch()
+fetch('https://pokeapi.co/api/v2/pokemon/').then(function (response) {
+  return response.json(); // This returns a promise!
+}).then(function (pokemonList) {
+  console.log(pokemonList); // The actual JSON response
+}).catch(function () {
+  // Error
+});
+
+//Fetch and Promise working together
+fetch('https://yesno.wtf/api', {
+  method: 'GET'
+}).then(function (response) {
+  return response.json(); // This returns a promise!
+}).then(function (json) {
+  console.log(json); // The actual JSON response
+}).catch(function () {
+  // Error
+});
