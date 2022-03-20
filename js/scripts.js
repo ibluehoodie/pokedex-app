@@ -1,3 +1,5 @@
+
+
 //IIFE wrapper
 let pokemonRepository = (function () {
   let pokemonList = [
@@ -17,6 +19,8 @@ let pokemonRepository = (function () {
       type: ["water"]
     }
   ]
+
+  let apiUrl = "https://pokeapi.co/api/v2/pokemon/?limit=150";
 
   function getAll () {
     return pokemonList;
@@ -49,9 +53,11 @@ let pokemonRepository = (function () {
     addListener(button, pokemon);
   };
 
-//*for a later task
+//*use showDetails on user click to execute loadDetails()
   function showDetails(pokemon) {
-    console.log(pokemon.name);
+    loadDetails(pokemon).then(function () {
+      console.log(pokemon);
+    });
   };
 
   function addListener (button, pokemon) {
@@ -60,18 +66,61 @@ let pokemonRepository = (function () {
     })
   };
 
+//Loadlist function with JSON to fetch pokemon inventory from api
+function loadList() {
+  return fetch(apiUrl).then(function (response) {
+    return response.json();
+  }).then(function (json) {
+    json.results.forEach(function (item) {
+      let pokemon = {
+        name: item.name,
+        detailsUrl: item.url
+      };
+      add(pokemon);
+    });
+  }).catch(function (e) {
+    console.error(e);
+  })
+};
+
+//loadDetails function to give detailed info for a given pokemon
+function loadDetails(item) {
+  let url = item.detailsUrl;
+  return fetch(url).then(function (response) {
+    return response.json();
+  }).then(function (details) {
+    //Now add details to the item...
+    item.imageUrl = details.sprites.front_default;
+    item.height = details.height;
+    item.types = details.types;
+  }).catch(function (e) {
+    console.error(e);
+  });
+};
+
 //creates an objective with same names for keys and values
   return {
     getAll: getAll,
     add: add,
     addListItem: addListItem,
-    showDetails: showDetails
+    loadList: loadList,
+    loadDetails: loadDetails
+    //showDetails: showDetails
   };
 })();
 
-//adding pokemon with embedded object
-pokemonRepository.add({ name: "Pikachu", height: 0.3, type: ["electric"] });
-console.log(pokemonRepository.getAll());
+pokemonRepository.loadList().then(function() {
+  //Now the data is loaded
+  pokemonRepository.getall().forEach(function(pokemon) {
+    pokemonRepository.addListItem(pokemon);
+  });
+});
+
+//external forEach function. Can no longer retrieve local pokemonList bc of IIFE
+/*  pokemonRepository.getAll().forEach(printArrayDetails);
+  function printArrayDetails(list) {
+  document.write('<p>' + `${list.name}:` + '<br />' + `height: (${list.height})` + '<br />' + `type: (${list.type})` + '</p>');
+};
 
 //adding pokemon with passed object
 let pokemonNew = {
@@ -85,9 +134,4 @@ pokemonRepository.getAll().forEach(function (pokemon) {
   pokemonRepository.addListItem(pokemon);
   //document.write(pokemonRepository.getAll());
 });
-
-//external forEach function. Can no longer retrieve local pokemonList bc of IIFE
-/*  pokemonRepository.getAll().forEach(printArrayDetails);
-  function printArrayDetails(list) {
-  document.write('<p>' + `${list.name}:` + '<br />' + `height: (${list.height})` + '<br />' + `type: (${list.type})` + '</p>');
-}; */
+*/
