@@ -92,7 +92,7 @@ let pokemonRepository = (function () {
 
 pokemonRepository.loadList().then(function() {
   //Now the data is loaded
-  pokemonRepository.getall().forEach(function(pokemon) {
+  pokemonRepository.getAll().forEach(function(pokemon) {
     pokemonRepository.addListItem(pokemon);
   });
 });
