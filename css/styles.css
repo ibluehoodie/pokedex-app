@@ -30,16 +30,6 @@ h1 {
   font-weight: 700;
 }
 
-h2 {
-  font-size: 24px;
-  font-weight: 700;
-}
-
-h3 {
-  font-size: 18px;
-  font-weight: 700;
-}
-
 p {
   font-family: 'Ubuntu', sans-serif;
   font-size: 16px;
@@ -48,10 +38,17 @@ p {
 
 ul {
   list-style-type: none;
+  padding: 0;
+  text-align: center;
+  width: 100%;
+}
+
+.title {
+  text-align: center;
 }
 
 .pokemon-list_button {
-  width: 150px;
+  width: 200px;
   background-color: rgba(211, 211, 211, 0.9);
   color: black;
   border: 3px solid red;
@@ -75,4 +72,65 @@ ul {
 
 .pokemon-list_button:visited {
   background-color: var(--light-gray);
+}
+
+/* modal styling */
+.modal-container {
+  position: fixed;
+  padding: 10px;
+  box-sizing: border-box;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba (0, 0, 0, 0.5);
+  z-index: 999;
+  display: none;
+}
+
+.modal {
+  font-family: 'Ubuntu', sans-serif;
+  margin: auto;
+  display: inline-block;
+  box-sizing: border-box;
+  background: #fff;
+  box-shadow: 0 0 10px;
+  border-radius: 10px;
+  padding: 15px;
+  width: 75vw;
+  text-align: center;
+}
+
+.is-visible {
+  display: grid;
+}
+
+.modal_img {
+  width: 20vw;
+  height: auto;
+}
+
+.modal_imgb {
+  width: 20vw;
+  height: auto;
+}
+
+p.modal_text {
+  font-size: 110%;
+  line-height: 150%;
+}
+
+h1.modal_title {
+  font-size: 200%;
+}
+
+.modal-close {
+  float: right;
+  -webkit-appearance: none;
+  border: 0;
+  background: none;
+  color: #777;
+  text-decoration: underline;
+  transition-duration: 0.4s;
+  cursor: pointer;
 }
