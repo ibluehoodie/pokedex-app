@@ -1,7 +1,6 @@
 //IIFE wrapper
 let pokemonRepository = (function () {
   let pokemonList = [];
-  let apiUrl = "https://pokeapi.co/api/v2/pokemon/?limit=10";
 
 //filter with typeof to accept only pokemon objects
   function add(pokemon) {
@@ -37,6 +36,7 @@ let pokemonRepository = (function () {
 
 //Loadlist function with JSON to fetch pokemon inventory from api
   function loadList() {
+    let apiUrl = "https://pokeapi.co/api/v2/pokemon/?limit=10";
     return fetch(apiUrl).then(function (response) {
       return response.json();
     }).then(function (json) {
@@ -62,7 +62,7 @@ let pokemonRepository = (function () {
       item.imageUrlb =details.sprites.back_default;
       item.height = details.height;
       item.weight = details.weight;
-      item.types = details.types.type;
+      item.types = details.types.map((objects) => objects.type.name);
     }).catch(function (e) {
       console.error(e);
     });
