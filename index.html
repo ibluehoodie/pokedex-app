@@ -20,7 +20,110 @@
       <h1 class="title">p◓kedex</h1>
         <ul class="pokemon-list"></ul>
 
-        <div class="modal-container">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="index.html">
+            <img src="img/pokeball-icon.png" class="pokeball-icon" alt="Pokeball logo">
+          </a>
+          <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="#navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+              <li class="nav-item active">
+                <a class="nav-link active" aria-current="page" href="index.html">Home<span class="sr-only"></span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="https://pokeapi.co/" target="_blank">API</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="https://ibluehoodie.github.io/portfolio-webpage/index.html" target="_blank">Portfolio</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Pokémon Resources
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="https://www.pokemon.com/us/" target="_blank">Official Website</a></li>
+                  <li><a class="dropdown-item" href="https://hackernoon.com/5-best-pokemon-fan-games-you-can-play-for-free-in-2021-v72p33id" target="_blank">Top Fan Games</a></li>
+                  <li><a class="dropdown-item" href="https://www.wikihow.com/Category:Pokemon-Fandom" target="_blank">Pokémon Fandom</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="https://www.wikihow.com/Create-Your-Own-Pok%C3%A9mon" target="_blank">Create a Pokémon</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <!-- <nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="index.html">
+            <img src="img/pokeball-icon.png" class="pokeball-icon" alt="Pokeball logo">
+          </a>
+          <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="index.html">Home<span class="sr-only"></span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="https://pokeapi.co/" target="_blank">API</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="https://ibluehoodie.github.io/portfolio-webpage/index.html" target="_blank">Portfolio</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Pokémon Resources
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="https://www.pokemon.com/us/" target="_blank">Official Website</a></li>
+                  <li><a class="dropdown-item" href="https://hackernoon.com/5-best-pokemon-fan-games-you-can-play-for-free-in-2021-v72p33id" target="_blank">Top Fan Games</a></li>
+                  <li><a class="dropdown-item" href="https://www.wikihow.com/Category:Pokemon-Fandom" target="_blank">Pokémon Fandom</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="https://www.wikihow.com/Create-Your-Own-Pok%C3%A9mon" target="_blank">Create a Pokémon</a></li>
+                </ul>
+              </li>
+            </ul>
+            <form class="d-flex">
+              <input class="form-control me-2" type="search" placeholder="Search..." aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+          </div>
+        </div>
+      </nav> -->
+    </header>
+
+    <main>
+      <div class="page-title">
+        <h1 class="title">p◓kedex</h1>
+      </div>
+      <!-- Modal -->
+      <div class="container page-container">
+        <ul class="pokemon-list list-group"></ul>
+        <div class="modal fade" id="pokemonModal" tabindex="-1" role="dialog" aria-labelledby="pokemonModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content text-center">
+              <div class="modal-header">
+                <h5 class="modal-title"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body"></div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+        <!-- <div class="modal-container">
           <div class="modal">
             <button class="modal-close">close</button>
             <div>
