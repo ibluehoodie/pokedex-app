@@ -39,6 +39,53 @@ body {
   -webkit-text-fill-color: transparent;
   -moz-text-fill-color: transparent;
 }
+
+/* START TIENKUO */
+.button-pokemon {
+  background-color: rgb(194, 48, 48);
+  border: 0;
+  border-radius: 2em;
+  box-sizing: border-box;
+  color: yellow;
+  width:80%;
+  margin: 5px;
+  cursor: pointer;
+  font-weight: 600;
+  outline: 0;
+  padding: 16px 21px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: all .3s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-pokemon::before {
+  background-color: initial;
+  background-image: linear-gradient(90deg, #fff 0, rgba(255, 255, 255, 0) 100%);
+  border-radius: 2em;
+  content: "";
+  height: 50%;
+  left: 4%;
+  opacity: 0.5;
+  position: absolute;
+  top: 0;
+  transition: all 0.3s;
+  width: 92%;
+}
+
+.button-pokemon:hover {
+  border-color: #33ccff;
+  border-style: outset;
+  border-width: thin;
+  border-bottom: none;
+  background-color: #fff;
+  background-image: linear-gradient(to top, #33ccff 0, rgba(255, 255, 255, 0) 100%);
+  color: rgb(194, 48, 48);
+}
+
 h1 {
   font-size: 30px;
   font-weight: 700;
