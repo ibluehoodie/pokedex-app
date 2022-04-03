@@ -1,13 +1,4 @@
 
-:root {
-  /* colors */
-  --white: #fff;
-  --black: #000;
-  --light-gray: #808f96;
-
-  /* font-sizes */
-}
-
 body {
   /* background: url("img/ex_pokemon-background.jpg"); */
   /* background-repeat: no-repeat, repeat; */
@@ -29,6 +20,32 @@ body {
   border-width: medium;
 }
 
+.btn-outline-success {
+  color: white;
+  background-color: transparent;
+  background-image: none;
+  border-color: red;
+  border-width: medium;
+}
+
+.btn-outline-success:hover {
+  color: white;
+  background-color: red;
+  background-image: none;
+  border-color: white;
+  border-width: medium;
+}
+
+/* Not working - cover green border with existing white border */
+.btn-outline-success:focus {
+  border-width: medium;
+}
+
+/* Not working - replace green background with red on click */
+.btn-outline-success:active {
+  background-color: red;
+}
+
 .page-title {
   margin-top: 80px;
 }
@@ -42,7 +59,7 @@ body {
 
 .gradient-text {
   background-color: rgb(194, 48, 48);
-  background-image: linear-gradient(270deg, yellow 25%, rgba(255, 255, 255, 0) 100%);
+  background-image: linear-gradient(270deg, yellow 15%, rgba(255, 255, 255, 0) 100%);
   background-size: 100%;
   -webkit-background-clip: text;
   -moz-background-clip: text;
@@ -50,14 +67,13 @@ body {
   -moz-text-fill-color: transparent;
 }
 
-/* START TIENKUO */
 .button-pokemon {
   background-color: rgb(194, 48, 48);
   border: 0;
   border-radius: 2em;
   box-sizing: border-box;
   color: yellow;
-  width:80%;
+  width: 80%;
   margin: 5px;
   cursor: pointer;
   font-weight: 600;
@@ -66,7 +82,7 @@ body {
   position: relative;
   text-align: center;
   text-decoration: none;
-  transition: all .3s;
+  transition: all 0.3s;
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
@@ -87,16 +103,15 @@ body {
 }
 
 .button-pokemon:hover {
-  border-color: #33ccff;
+  border-color: #3cf;
   border-style: outset;
   border-width: thin;
   border-bottom: none;
   background-color: #fff;
-  background-image: linear-gradient(to top, #33ccff 0, rgba(255, 255, 255, 0) 100%);
+  background-image: linear-gradient(to top, #3cf 0, rgba(255, 255, 255, 0) 100%);
   color: rgb(194, 48, 48);
 }
 
-/* CONTINUE ORIGINAL */
 .pokemon-list {
   list-style: none;
   display: grid;
@@ -114,129 +129,38 @@ body {
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
   .pokemon-list {
     grid-template-columns: 1fr;
     grid-column-gap: 50px;
   }
 
+  .page-title {
+    margin-top: 120px;
+  }
+
   /* Add more responsive design settings */
 }
 
-@media (min-width: 600px) and (max-width: 1100px) {
+@media (max-width: 450px) {
+  .pokemon-list {
+    grid-template-columns: 1fr;
+    grid-column-gap: 50px;
+  }
+
+  .page-title {
+    margin-top: 200px;
+  }
+
+  .title {
+    font-size: 50px;
+    margin: 10px;
+  }
+}
+
+@media (min-width: 700px) and (max-width: 1100px) {
   .pokemon-list {
     grid-template-columns: 1fr 1fr;
     grid-column-gap: 20px;
   }
-}
-
-/*
-h1 {
-  font-size: 30px;
-  font-weight: 700;
-}
-
-p {
-  font-family: 'Ubuntu', sans-serif;
-  font-size: 16px;
-  font-weight: 400;
-}
-
-ul {
-  padding: 0;
-  text-align: center;
-  width: 100%;
-} */
-
-.title {
-  text-align: center;
-}
-
-.pokemon-list_button {
-  width: 200px;
-  background-color: rgba(211, 211, 211, 0.9);
-  color: black;
-  border: 3px solid red;
-  border-radius: 8px;
-  padding: 8px 16px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-family: inherit;
-  font-weight: 600;
-  font-size: 16px;
-  margin: 4px 2px;
-  transition-duration: 0.4s;
-  cursor: pointer;
-}
-
-.pokemon-list_button:hover,
-.pokemon-list_button:focus {
-  opacity: 0.8;
-}
-
-.pokemon-list_button:visited {
-  background-color: var(--light-gray);
-}
-
-/* modal styling */
-.modal-container {
-  position: fixed;
-  padding: 10px;
-  box-sizing: border-box;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba (0, 0, 0, 0.5);
-  z-index: 999;
-  display: none;
-}
-
-/* .modal {
-  font-family: 'Ubuntu', sans-serif;
-  margin: auto;
-  display: inline-block;
-  box-sizing: border-box;
-  background: #fff;
-  box-shadow: 0 0 10px;
-  border-radius: 10px;
-  padding: 15px;
-  width: 50%;
-  height: 60%;
-  text-align: center;
-} */
-
-.is-visible {
-  display: grid;
-}
-
-.modal_img {
-  width: 20vw;
-  height: auto;
-}
-
-.modal_imgb {
-  width: 20vw;
-  height: auto;
-}
-
-p.modal_text {
-  font-size: 110%;
-  line-height: 150%;
-}
-
-h1.modal_title {
-  font-size: 200%;
-}
-
-.modal-close {
-  float: right;
-  -webkit-appearance: none;
-  border: 0;
-  background: none;
-  color: #777;
-  text-decoration: underline;
-  transition-duration: 0.4s;
-  cursor: pointer;
 }
