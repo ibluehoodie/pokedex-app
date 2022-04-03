@@ -103,7 +103,7 @@ let pokemonRepository = (function () {
 //New Modal with Bootstrap_______________________________________
   function showModal(item) {
     let modalBody = $(".modal-body");
-    let modalTitle = $("modal-title");
+    let modalTitle = $(".modal-title");
     // let $modalContainer = $("#modal-container");
     //clear existing content of the modal_img
     // modalHeader.empty();
@@ -126,9 +126,9 @@ let pokemonRepository = (function () {
     // creating element for weight in modal content
     let weightElement = $("<p>" + "weight: " + item.weight/10 + " kg" + "</p>");
     // creating element for type in modal content
-    let typesElement = $("<p>" + "types: " + item.types + "</p>");
+    let typesElement = $("<p>" + "types: " + item.types.join(", ") + "</p>");
     // creating element for abilites in modal content
-    let abilitiesElement = $("<p>" + "abilities: " + item.abilities + "</p>");
+    let abilitiesElement = $("<p>" + "abilities: " + item.abilities.join(", ") + "</p>");
 
     modalTitle.append(nameElement);
     modalBody.append(imageElementFront);
