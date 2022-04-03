@@ -72,6 +72,11 @@ let pokemonRepository = (function () {
       console.log(item);
     });
   };
+            name: capitalizeFirstLetter(item.name),
+  //function to capitalize first letter of e.g. pokemon name
+  function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
 
 //New Modal with Bootstrap_______________________________________
   function showModal(item) {
