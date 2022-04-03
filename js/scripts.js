@@ -36,6 +36,11 @@ let pokemonRepository = (function () {
       pokemonList.appendChild(pokemonListItem);
     };
 
+    function handleButtonClick(button,pokemon) {
+      //add event listener to the pokemon button
+      button.addEventListener("click", function(event) {
+      //invoke the showDetails function when the button is clicked
+        showDetails(pokemon);
       });
     }
 
@@ -140,6 +145,7 @@ let pokemonRepository = (function () {
     loadList: loadList,
     loadDetails: loadDetails,
     showDetails: showDetails,
+    handleButtonClick: handleButtonClick,
   };
 })();
 
