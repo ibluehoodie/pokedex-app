@@ -1,7 +1,8 @@
 //IIFE wrapper
 let pokemonRepository = (function () {
   let pokemonList = [];
-  let apiUrl = "https://pokeapi.co/api/v2/pokemon/?limit=10";
+  let apiUrl = "https://pokeapi.co/api/v2/pokemon/?limit=100";
+  // let modalContainer = document.querySelector(".modal-container");
 
 //filter with typeof to accept only pokemon objects
   function add(pokemon) {
@@ -13,10 +14,11 @@ let pokemonRepository = (function () {
       pokemonList.push(pokemon);
     } else {
       //replace document.write
-      document.write("may not be a pokemon");
+      console.log("may not be a pokemon");
     }
   };
 
+  //return all pokemon from list
   function getAll() {
     return pokemonList;
   };
@@ -147,6 +149,8 @@ let pokemonRepository = (function () {
     showDetails: showDetails,
     handleButtonClick: handleButtonClick,
   };
+
+//end IIFE
 })();
 
 pokemonRepository.loadList().then(function() {
