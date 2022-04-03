@@ -42,8 +42,10 @@ body {
 }
 
 /* Not working - replace green background with red on click */
-.btn-outline-success:active {
-  background-color: red;
+.btn-outline-success:active,
+.btn-outline-success:not(.disabled):active {
+  background-color: rgb(194, 48, 48);
+  border-color: rgb(194, 48, 48);
 }
 
 .page-title {
