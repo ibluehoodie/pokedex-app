@@ -21,19 +21,20 @@ let pokemonRepository = (function () {
     return pokemonList;
   };
 
-//replaces document.write() from the forEach loop
-  function addListItem(pokemon) {
-    let pokemonListUL = document.querySelector(".pokemon-list");
-    let listPoke = document.createElement("li");
-    let button = document.createElement("button");
-    button.innerText = pokemon.name;
-    button.classList.add("pokemon-list_button");
-    listPoke.appendChild(button);
-    pokemonListUL.appendChild(listPoke);
-    button.addEventListener("click", function(event) {
-      showDetails(pokemon);
-    });
-  };
+  //creates button for pokemon by name
+    function addListItem(pokemon) {
+      let pokemonList = document.querySelector(".list-group");
+      let pokemonListItem = document.createElement("li");
+      pokemonListItem.classList.add("group-list-item"); //add bootstrap class
+      let button = document.createElement("button");
+      button.innerText = pokemon.name;
+      button.classList.add("button-pokemon", "btn"); //add class name to button
+      button.setAttribute("data-toggle", "modal");
+      button.setAttribute("data-target", "#pokemonModal");
+      pokemonRepository.handleButtonClick(button, pokemon); //Invoke the function to add event listener
+      pokemonListItem.appendChild(button);
+      pokemonList.appendChild(pokemonListItem);
+    };
 
       });
     }
