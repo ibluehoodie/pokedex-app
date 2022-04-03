@@ -35,44 +35,58 @@ let pokemonRepository = (function () {
     });
   };
 
-//Loadlist function with JSON to fetch pokemon inventory from api
-  function loadList() {
-    return fetch(apiUrl).then(function (response) {
-      return response.json();
-    }).then(function (json) {
-      json.results.forEach(function (item) {
-        let pokemon = {
-          name: item.name,
-          detailsUrl: item.url
-        };
-        add(pokemon);
       });
-    }).catch(function (e) {
-      console.error(e);
-    })
-  };
+    }
 
-//loadDetails function to give detailed info for a given pokemon
-  function loadDetails(item) {
-    let url = item.detailsUrl;
-    return fetch(url).then(function (response) {
-      return response.json();
-    }).then(function (details) {
-      item.imageUrl = details.sprites.front_default;
-      item.height = details.height;
-      item.types = details.types;
-    }).catch(function (e) {
-      console.error(e);
-    });
-  };
+  //after clicking on pokemon button, loads the data from pokemon api
+    function showDetails(pokemon) {
+      loadDetails(pokemon).then(function () {
+        console.log(pokemon);
+        showModal(pokemon);
+      });
+    };
 
-//*use showDetails on user click to execute loadDetails()
-  function showDetails(item) {
-    pokemonRepository.loadDetails(item).then(function () {
-      console.log(item);
-    });
-  };
+  //Loadlist function with JSON to fetch pokemon inventory from api
+    function loadList() {
+      //showLoadingMessage();
+      return fetch(apiUrl).then(function (response) {
+        return response.json();
+      }).then(function (json) {
+        json.results.forEach(function (item) {
+          let pokemon = {
             name: capitalizeFirstLetter(item.name),
+            detailsUrl: item.url
+          };
+          add(pokemon);
+          //hideLoadingMessage();
+          // console.log(pokemon);
+        });
+      }).catch(function (e) {
+          //hideLoadingMessage();
+        console.error(e);
+      })
+    };
+
+  //loadDetails function to give detailed info for a given pokemon
+    function loadDetails(item) {
+      //showLoadingMessage();
+      let url = item.detailsUrl;
+      return fetch(url).then(function (response) {
+        return response.json();
+      }).then(function (details) {
+        item.imageUrl = details.sprites.front_default;
+        item.imageUrlb =details.sprites.back_default;
+        item.height = details.height;
+        item.weight = details.weight;
+        item.types = details.types.map((objects) => objects.type.name);
+        item.abilities = details.abilities.map((objects) => objects.ability.name);
+      //hideLoadingMessage();
+      }).catch(function (e) {
+      //hideLoadingMessage();
+        console.error(e);
+      });
+    };
+
   //function to capitalize first letter of e.g. pokemon name
   function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
@@ -124,7 +138,7 @@ let pokemonRepository = (function () {
     addListItem: addListItem,
     loadList: loadList,
     loadDetails: loadDetails,
-    showDetails: showDetails
+    showDetails: showDetails,
   };
 })();
 
