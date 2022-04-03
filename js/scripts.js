@@ -73,10 +73,43 @@ let pokemonRepository = (function () {
     });
   };
 
-  function addListener (button, pokemon) {
-    button.addEventListener ("click", function () {
-      showDetails(pokemon);
-    })
+//New Modal with Bootstrap_______________________________________
+  function showModal(item) {
+    let modalBody = $(".modal-body");
+    let modalTitle = $("modal-title");
+    // let $modalContainer = $("#modal-container");
+    //clear existing content of the modal_img
+    // modalHeader.empty();
+
+    modalTitle.innerHTML = "";
+    modalBody.innerHTML = "";
+
+    modalTitle.empty();
+    modalBody.empty();
+
+    // creating element for name in modal content
+    let nameElement = $("<h1>" + capitalizeFirstLetter(item.name) + "</h1>");
+    // creating img in modal content
+    let imageElementFront = $("<img class='modal-img' style='width:50%'>");
+    imageElementFront.attr("src", item.imageUrl);
+    let imageElementBack = $("<img class='modal-img' style='width:50%'>");
+    imageElementBack.attr("src", item.imageUrlb);
+    // creating element for height in modal content
+    let heightElement = $("<p>" + "height: " + item.height*10 + " cm" + "</p>");
+    // creating element for weight in modal content
+    let weightElement = $("<p>" + "weight: " + item.weight/10 + " kg" + "</p>");
+    // creating element for type in modal content
+    let typesElement = $("<p>" + "types: " + item.types + "</p>");
+    // creating element for abilites in modal content
+    let abilitiesElement = $("<p>" + "abilities: " + item.abilities + "</p>");
+
+    modalTitle.append(nameElement);
+    modalBody.append(imageElementFront);
+    modalBody.append(imageElementBack);
+    modalBody.append(heightElement);
+    modalBody.append(weightElement);
+    modalBody.append(typesElement);
+    modalBody.append(abilitiesElement);
   };
 
 //creates an objective with same names for keys and values
