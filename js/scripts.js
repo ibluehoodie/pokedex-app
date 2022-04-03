@@ -129,32 +129,3 @@ pokemonRepository.loadList().then(function() {
     pokemonRepository.addListItem(pokemon);
   });
 });
-
-//external forEach function. Can no longer retrieve local pokemonList bc of IIFE
-/*  pokemonRepository.getAll().forEach(printArrayDetails);
-  function printArrayDetails(list) {
-  document.write('<p>' + `${list.name}:` + '<br />' + `height: (${list.height})` + '<br />' + `type: (${list.type})` + '</p>');
-};
-
-pokemonRepository.getAll().forEach(function (pokemon) {
-  pokemonRepository.addListItem(pokemon);
-  //document.write(pokemonRepository.getAll());
-});
-
-Original Pokemon Array
-{
-  name: "Bulbasaur",
-  height: 0.7,
-  type: ["grass", "poison"]
-},
-{
-  name: "Charmander",
-  height: 0.6,
-  type: ["fire"]
-},
-{
-  name: "Squirtle",
-  height: 0.5,
-  type: ["water"]
-}
-*/
