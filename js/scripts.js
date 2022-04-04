@@ -1,7 +1,7 @@
 //IIFE wrapper
 let pokemonRepository = (function () {
   let pokemonList = [];
-  let apiUrl = "https://pokeapi.co/api/v2/pokemon/?limit=100";
+  let apiUrl = "https://pokeapi.co/api/v2/pokemon/?limit=152";
   // let modalContainer = document.querySelector(".modal-container");
 
   //filter with typeof to accept only pokemon objects
@@ -16,6 +16,27 @@ let pokemonRepository = (function () {
       //replace document.write
       console.log("may not be a pokemon");
     }
+  }
+
+  function filter(name) {
+      return pokemonList.filter(pokemonList => pokemonList.name === name);
+    }
+
+    function findPokemon(searchName) {
+    //jquery syntax
+    // Clear all the buttons on the page when user types in search box
+    $(".pokemon-list").empty();
+
+    // Add pokemon buttons for which the name includes the search string
+    pokemonList.forEach(pokemon => {
+      if (
+        capitalizeFirstLetter(pokemon.name).indexOf(
+          capitalizeFirstLetter(searchName)
+        ) > -1
+      ) {
+        addListItem(pokemon);
+      }
+    });
   }
 
   //return all pokemon from list
@@ -156,6 +177,8 @@ let pokemonRepository = (function () {
   //creates an objective with same names for keys and values
   return {
     add: add,
+    filter: filter,
+    findPokemon: findPokemon,
     getAll: getAll,
     addListItem: addListItem,
     loadList: loadList,
