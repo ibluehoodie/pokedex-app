@@ -2,6 +2,14 @@
 body {
   /* background: url("img/ex_pokemon-background.jpg"); */
   /* background-repeat: no-repeat, repeat; */
+
+  background-image: url(img/pikachu-wallpaper.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  margin: 0;
+  padding: 0;
   background-color: rgb(209, 209, 209, 0.6);
   font-family: 'Lato', sans-serif;
   font-weight: 400;
