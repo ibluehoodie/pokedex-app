@@ -4,7 +4,7 @@ let pokemonRepository = (function () {
   let apiUrl = "https://pokeapi.co/api/v2/pokemon/?limit=100";
   // let modalContainer = document.querySelector(".modal-container");
 
-//filter with typeof to accept only pokemon objects
+  //filter with typeof to accept only pokemon objects
   function add(pokemon) {
     if (
       typeof pokemon === "object" &&
@@ -16,91 +16,99 @@ let pokemonRepository = (function () {
       //replace document.write
       console.log("may not be a pokemon");
     }
-  };
+  }
 
   //return all pokemon from list
   function getAll() {
     return pokemonList;
-  };
+  }
 
   //creates button for pokemon by name
-    function addListItem(pokemon) {
-      let pokemonList = document.querySelector(".list-group");
-      let pokemonListItem = document.createElement("li");
-      pokemonListItem.classList.add("group-list-item"); //add bootstrap class
-      let button = document.createElement("button");
-      button.innerText = pokemon.name;
-      button.classList.add("button-pokemon", "btn"); //add class name to button
-      button.setAttribute("data-toggle", "modal");
-      button.setAttribute("data-target", "#pokemonModal");
-      pokemonRepository.handleButtonClick(button, pokemon); //Invoke the function to add event listener
-      pokemonListItem.appendChild(button);
-      pokemonList.appendChild(pokemonListItem);
-    };
+  function addListItem(pokemon) {
+    let pokemonList = document.querySelector(".list-group");
+    let pokemonListItem = document.createElement("li");
+    pokemonListItem.classList.add("group-list-item"); //add bootstrap class
+    let button = document.createElement("button");
+    button.innerText = pokemon.name;
+    button.classList.add("button-pokemon", "btn"); //add class name to button
+    button.setAttribute("data-toggle", "modal");
+    button.setAttribute("data-target", "#pokemonModal");
+    pokemonRepository.handleButtonClick(button, pokemon); //Invoke the function to add event listener
+    pokemonListItem.appendChild(button);
+    pokemonList.appendChild(pokemonListItem);
+  }
 
-    function handleButtonClick(button,pokemon) {
-      //add event listener to the pokemon button
-      button.addEventListener("click", function(event) {
+  function handleButtonClick(button, pokemon) {
+    //add event listener to the pokemon button
+    button.addEventListener("click", function () {
       //invoke the showDetails function when the button is clicked
-        showDetails(pokemon);
-      });
-    }
+      showDetails(pokemon);
+    });
+  }
 
   //after clicking on pokemon button, loads the data from pokemon api
-    function showDetails(pokemon) {
-      loadDetails(pokemon).then(function () {
-        console.log(pokemon);
-        showModal(pokemon);
-      });
-    };
+  function showDetails(pokemon) {
+    loadDetails(pokemon).then(function () {
+      console.log(pokemon);
+      showModal(pokemon);
+    });
+  }
 
   //Loadlist function with JSON to fetch pokemon inventory from api
-    function loadList() {
-      //showLoadingMessage();
-      return fetch(apiUrl).then(function (response) {
+  function loadList() {
+    //showLoadingMessage();
+    return fetch(apiUrl)
+      .then(function (response) {
         return response.json();
-      }).then(function (json) {
+      })
+      .then(function (json) {
         json.results.forEach(function (item) {
           let pokemon = {
             name: capitalizeFirstLetter(item.name),
-            detailsUrl: item.url
+            detailsUrl: item.url,
           };
           add(pokemon);
           //hideLoadingMessage();
           // console.log(pokemon);
         });
-      }).catch(function (e) {
-          //hideLoadingMessage();
-        console.error(e);
       })
-    };
+      .catch(function (e) {
+        //hideLoadingMessage();
+        console.error(e);
+      });
+  }
 
   //loadDetails function to give detailed info for a given pokemon
-    function loadDetails(item) {
-      //showLoadingMessage();
-      let url = item.detailsUrl;
-      return fetch(url).then(function (response) {
+  function loadDetails(item) {
+    //showLoadingMessage();
+    let url = item.detailsUrl;
+    return fetch(url)
+      .then(function (response) {
         return response.json();
-      }).then(function (details) {
+      })
+      .then(function (details) {
         item.imageUrl = details.sprites.front_default;
-        item.imageUrlb =details.sprites.back_default;
+        item.imageUrlb = details.sprites.back_default;
         item.height = details.height;
         item.weight = details.weight;
         item.types = details.types.map((objects) => objects.type.name);
-        item.abilities = details.abilities.map((objects) => objects.ability.name);
-      //hideLoadingMessage();
-      }).catch(function (e) {
-      //hideLoadingMessage();
+        item.abilities = details.abilities.map(
+          (objects) => objects.ability.name
+        );
+        //hideLoadingMessage();
+      })
+      .catch(function (e) {
+        //hideLoadingMessage();
         console.error(e);
       });
-    };
+  }
 
   //function to capitalize first letter of e.g. pokemon name
   function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
 
-//New Modal with Bootstrap_______________________________________
+  //New Modal with Bootstrap_______________________________________
   function showModal(item) {
     let modalBody = $(".modal-body");
     let modalTitle = $(".modal-title");
@@ -122,13 +130,19 @@ let pokemonRepository = (function () {
     let imageElementBack = $("<img class='modal-img' style='width:50%'>");
     imageElementBack.attr("src", item.imageUrlb);
     // creating element for height in modal content
-    let heightElement = $("<p>" + "height: " + item.height*10 + " cm" + "</p>");
+    let heightElement = $(
+      "<p>" + "height: " + item.height * 10 + " cm" + "</p>"
+    );
     // creating element for weight in modal content
-    let weightElement = $("<p>" + "weight: " + item.weight/10 + " kg" + "</p>");
+    let weightElement = $(
+      "<p>" + "weight: " + item.weight / 10 + " kg" + "</p>"
+    );
     // creating element for type in modal content
     let typesElement = $("<p>" + "types: " + item.types.join(", ") + "</p>");
     // creating element for abilites in modal content
-    let abilitiesElement = $("<p>" + "abilities: " + item.abilities.join(", ") + "</p>");
+    let abilitiesElement = $(
+      "<p>" + "abilities: " + item.abilities.join(", ") + "</p>"
+    );
 
     modalTitle.append(nameElement);
     modalBody.append(imageElementFront);
@@ -137,9 +151,9 @@ let pokemonRepository = (function () {
     modalBody.append(weightElement);
     modalBody.append(typesElement);
     modalBody.append(abilitiesElement);
-  };
+  }
 
-//creates an objective with same names for keys and values
+  //creates an objective with same names for keys and values
   return {
     add: add,
     getAll: getAll,
@@ -150,12 +164,12 @@ let pokemonRepository = (function () {
     handleButtonClick: handleButtonClick,
   };
 
-//end IIFE
+  //end IIFE
 })();
 
-pokemonRepository.loadList().then(function() {
+pokemonRepository.loadList().then(function () {
   //Now the data is loaded
-  pokemonRepository.getAll().forEach(function(pokemon) {
+  pokemonRepository.getAll().forEach(function (pokemon) {
     pokemonRepository.addListItem(pokemon);
   });
 });
