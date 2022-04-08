@@ -106,7 +106,8 @@ body {
 
 .button-pokemon {
   background-color: rgb(194, 48, 48);
-  border: 0;
+  border-width: thin;
+  border: transparent;
   border-radius: 2em;
   box-sizing: border-box;
   color: yellow;
